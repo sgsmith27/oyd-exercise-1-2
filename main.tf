@@ -1,0 +1,9 @@
+resource "aws_s3_bucket" "main" {
+  bucket = local.bucket_name
+
+  tags = {
+    Environment = var.environment
+    Project     = var.project_name
+    ManagedBy   = "terraform"
+  }
+}
