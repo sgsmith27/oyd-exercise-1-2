@@ -8,6 +8,8 @@ Sesión: 1 — 23 de abril de 2026
 # Repositorio
 oyd-exercise-1-2
 
+---
+
 # Objetivo del ejercicio
 Reestructurar una configuración Terraform monolítica en una estructura organizada y reutilizable utilizando:
 
@@ -20,7 +22,10 @@ Reestructurar una configuración Terraform monolítica en una estructura organiz
 
 Sin agregar nueva infraestructura ni modificar la funcionalidad existente.
 
+---
 # Estructura final del proyecto
+
+```
 oyd-exercise-1-2/
 ├── provider.tf
 ├── variables.tf
@@ -29,22 +34,27 @@ oyd-exercise-1-2/
 ├── outputs.tf
 ├── dev.tfvars
 ├── prod.tfvars
+```
+----
 
 # Task 1 — Separación de archivos
 La configuración original contenía todos los bloques Terraform en un único archivo everything.tf.
 
 La solución reorganizó la infraestructura separando cada responsabilidad en archivos independientes:
 
-|Archivo	|Responsabilidad
-|provider.tf	|Provider y configuración Terraform
-|variables.tf	|Variables de entrada
-|locals.tf	|Valores derivados
-|main.tf	|Recursos
-|outputs.tf	|Outputs
-|dev.tfvars	|Variables para ambiente dev
-|prod.tfvars	|Variables para ambiente prod
+| Archivo	| Responsabilidad |
+----------|-----------------|
+| provider.tf	| Provider y configuración Terraform|
+| variables.tf	| Variables de entrada|
+| locals.tf	| Valores derivados|
+| main.tf	| Recursos|
+| outputs.tf	| Outputs|
+| dev.tfvars	| Variables para ambiente dev|
+| prod.tfvars	| Variables para ambiente prod|
 
 El archivo everything.tf fue eliminado al finalizar.
+
+---
 
 # Task 2 — Parametrización
 ## Archivo: variables.tf
@@ -85,6 +95,8 @@ La variable environment incluye un bloque validation que restringe los valores p
 
 - dev
 - prod
+  
+---
 
 # Task 3 — Construcción del bucket name mediante locals
 ## Archivo: locals.tf
@@ -103,6 +115,8 @@ centralización de lógica
 
 El recurso en main.tf utiliza:
 bucket = local.bucket_name
+
+----
 
 # Task 4 — tfvars por ambiente
 ## Archivo: dev.tfvars
@@ -126,6 +140,8 @@ Se modificaron más de dos variables entre:
 - prod
 
 cumpliendo los requisitos del ejercicio.
+
+----
 
 # Task 5 — Verificación
 ## Comandos ejecutados
@@ -179,3 +195,5 @@ Esto permite:
 - prevenir errores temprano
 - imponer contratos de configuración
 - mejorar seguridad y consistencia
+
+---
