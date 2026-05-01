@@ -23,7 +23,7 @@ Sin modificar la funcionalidad original de la infraestructura.
 
 
 ## Estructura del proyecto
-
+```
 oyd-exercise-1-2/
 ├── provider.tf
 ├── variables.tf
@@ -34,10 +34,12 @@ oyd-exercise-1-2/
 ├── prod.tfvars
 ├── README.md
 └── Exervise 1-2.md
+```
 
---
+---
 
 ## Autor
 
 Sergio Geovany Garcia Smith
+
 Carnet: 25008130
